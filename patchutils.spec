@@ -4,7 +4,7 @@
 #
 Name     : patchutils
 Version  : 0.3.4
-Release  : 13
+Release  : 14
 URL      : http://cyberelk.net/tim/data/patchutils/stable/patchutils-0.3.4.tar.xz
 Source0  : http://cyberelk.net/tim/data/patchutils/stable/patchutils-0.3.4.tar.xz
 Summary  : A collection of programs for manipulating patch files.
