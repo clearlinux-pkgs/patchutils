@@ -4,15 +4,16 @@
 #
 Name     : patchutils
 Version  : 0.3.4
-Release  : 19
+Release  : 21
 URL      : http://cyberelk.net/tim/data/patchutils/stable/patchutils-0.3.4.tar.xz
 Source0  : http://cyberelk.net/tim/data/patchutils/stable/patchutils-0.3.4.tar.xz
 Summary  : A collection of programs for manipulating patch files.
 Group    : Development/Tools
 License  : GPL-2.0 GPL-2.0+
-Requires: patchutils-bin
-Requires: patchutils-doc
-BuildRequires : rpm-common
+Requires: patchutils-bin = %{version}-%{release}
+Requires: patchutils-license = %{version}-%{release}
+Requires: patchutils-man = %{version}-%{release}
+BuildRequires : rpm
 BuildRequires : vim
 BuildRequires : xmlto
 
@@ -25,34 +26,54 @@ and simply listing the files modified by a patch.
 %package bin
 Summary: bin components for the patchutils package.
 Group: Binaries
+Requires: patchutils-license = %{version}-%{release}
 
 %description bin
 bin components for the patchutils package.
 
 
-%package doc
-Summary: doc components for the patchutils package.
-Group: Documentation
+%package license
+Summary: license components for the patchutils package.
+Group: Default
 
-%description doc
-doc components for the patchutils package.
+%description license
+license components for the patchutils package.
+
+
+%package man
+Summary: man components for the patchutils package.
+Group: Default
+
+%description man
+man components for the patchutils package.
 
 
 %prep
 %setup -q -n patchutils-0.3.4
+cd %{_builddir}/patchutils-0.3.4
 
 %build
-%configure --disable-static
-make V=1  %{?_smp_mflags}
-
-%check
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
-make check
+export no_proxy=localhost,127.0.0.1,0.0.0.0
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1574107397
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+%configure --disable-static
+make  %{?_smp_mflags}
 
 %install
+export SOURCE_DATE_EPOCH=1574107397
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/patchutils
+cp %{_builddir}/patchutils-0.3.4/COPYING %{buildroot}/usr/share/package-licenses/patchutils/74a8a6531a42e124df07ab5599aad63870fa0bd4
 %make_install
 
 %files
@@ -75,6 +96,23 @@ rm -rf %{buildroot}
 /usr/bin/splitdiff
 /usr/bin/unwrapdiff
 
-%files doc
-%defattr(-,root,root,-)
-%doc /usr/share/man/man1/*
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/patchutils/74a8a6531a42e124df07ab5599aad63870fa0bd4
+
+%files man
+%defattr(0644,root,root,0755)
+/usr/share/man/man1/combinediff.1
+/usr/share/man/man1/dehtmldiff.1
+/usr/share/man/man1/editdiff.1
+/usr/share/man/man1/espdiff.1
+/usr/share/man/man1/filterdiff.1
+/usr/share/man/man1/fixcvsdiff.1
+/usr/share/man/man1/flipdiff.1
+/usr/share/man/man1/grepdiff.1
+/usr/share/man/man1/interdiff.1
+/usr/share/man/man1/lsdiff.1
+/usr/share/man/man1/recountdiff.1
+/usr/share/man/man1/rediff.1
+/usr/share/man/man1/splitdiff.1
+/usr/share/man/man1/unwrapdiff.1
