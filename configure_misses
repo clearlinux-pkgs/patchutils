@@ -1,5 +1,6 @@
 Configure miss: sensible-editor
 Configure miss: editor
-Configure miss: src/filterdiff.c:1358:28: warning: format not a string literal and no format arguments [-Wformat-security]
-
-Configure miss: src/filterdiff.c:1616:28: warning: format not a string literal and no format arguments [-Wformat-security]
+Configure miss: pcre2posix.h usability
+Configure miss: pcre2posix.h presence
+Configure miss: pcre2posix.h
+Configure miss: regexec in -lpcre2-posix_missing_header
