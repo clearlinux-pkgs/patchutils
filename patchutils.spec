@@ -6,7 +6,7 @@
 #
 Name     : patchutils
 Version  : 0.4.2
-Release  : 25
+Release  : 26
 URL      : http://cyberelk.net/tim/data/patchutils/stable/patchutils-0.4.2.tar.xz
 Source0  : http://cyberelk.net/tim/data/patchutils/stable/patchutils-0.4.2.tar.xz
 Source1  : http://cyberelk.net/tim/data/patchutils/stable/patchutils-0.4.2.tar.xz.sig
