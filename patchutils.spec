@@ -6,7 +6,7 @@
 #
 Name     : patchutils
 Version  : 0.4.2
-Release  : 26
+Release  : 27
 URL      : http://cyberelk.net/tim/data/patchutils/stable/patchutils-0.4.2.tar.xz
 Source0  : http://cyberelk.net/tim/data/patchutils/stable/patchutils-0.4.2.tar.xz
 Source1  : http://cyberelk.net/tim/data/patchutils/stable/patchutils-0.4.2.tar.xz.sig
@@ -60,7 +60,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1631842571
+export SOURCE_DATE_EPOCH=1663088499
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -73,10 +73,10 @@ export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1631842571
+export SOURCE_DATE_EPOCH=1663088499
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/patchutils
-cp %{_builddir}/patchutils-0.4.2/COPYING %{buildroot}/usr/share/package-licenses/patchutils/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/patchutils-%{version}/COPYING %{buildroot}/usr/share/package-licenses/patchutils/4cc77b90af91e615a64ae04893fdffa7939db84c || :
 %make_install
 
 %files
